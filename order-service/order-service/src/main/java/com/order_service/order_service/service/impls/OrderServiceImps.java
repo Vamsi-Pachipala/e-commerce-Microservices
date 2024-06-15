@@ -43,9 +43,9 @@ public class OrderServiceImps implements OrderService {
         }
 
         try {
-            InventoryResponse[] inventoryResponses = webClientConfig.getWebClientConfig()
+            InventoryResponse[] inventoryResponses = webClientConfig.getWebClientConfig().build()
                     .method(HttpMethod.POST)
-                    .uri("http://localhost:8082/api/inventory/check-in-stock")
+                    .uri("http://inventory-service/api/inventory/check-in-stock")
                     .bodyValue(inventoryCheckLists)
                     .retrieve()
                     .bodyToMono(InventoryResponse[].class)
