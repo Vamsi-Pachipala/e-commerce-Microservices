@@ -21,12 +21,9 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
 
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: DEBUG
-        type:
-          descriptor:
-            sql:
-              BasicBinder: TRACE
+user:
+  message: "VamsiPachipala"
+
+
+build:
+  version: "1.0.0"
