@@ -8,10 +8,8 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.core.env.Environment;
 
 @RestController
 @RequestMapping("/api/user")
@@ -21,8 +19,17 @@ public class UserController {
     @Autowired
     Serviceimpls serviceimpls;
 
+
+    @Autowired
+    Environment environment;
+
     @PostMapping("/register")
     public ResponseEntity<UserResponseDto> registerUser(@Valid @RequestBody UserRegisterDto userRegisterDto){
        return serviceimpls.registerUser(userRegisterDto);
+    }
+
+    @GetMapping("/get-version")
+    public String getVersion(){
+        return environment.getProperty("JAVA_HOME");
     }
 }
