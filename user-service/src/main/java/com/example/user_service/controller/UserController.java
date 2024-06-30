@@ -7,8 +7,6 @@ import com.example.user_service.dto.userConfiReading;
 import com.example.user_service.service.Serviceimpls;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +19,6 @@ public class UserController {
     @Autowired
     Serviceimpls serviceimpls;
 
-
-    @Value("${build.version}")
-    public String version;
-
-    @Autowired
-    Environment environment;
-
-
     @Autowired
     userConfiReading userConfiReading;
 
@@ -38,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping("/get-version")
-    public String getVersion(){
-        return version;
+    public String getInfo(){
+        return userConfiReading.description();
     }
 }

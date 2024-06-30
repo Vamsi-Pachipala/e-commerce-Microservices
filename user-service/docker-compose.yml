@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    image: vamsi9515/user-service:s1
+    container_name: user-service
+    ports:
+      - "8080:8080"
+    environment:
+      USER_SERVICE_URL: http://user-service:8080
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/user-service_db
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0.27
+    container_name: mysql_db
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: user-service_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: root
+      DATABASE_PORT : 3306
+

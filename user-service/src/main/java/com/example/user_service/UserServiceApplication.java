@@ -7,8 +7,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
-@EnableDiscoveryClient
 @EnableConfigurationProperties(value = {userConfiReading.class})
+@EnableDiscoveryClient
 public class UserServiceApplication {
 
 	public static void main(String[] args) {

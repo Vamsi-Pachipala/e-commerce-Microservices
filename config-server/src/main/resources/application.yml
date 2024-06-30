@@ -1,0 +1,17 @@
+server:
+  port: 8071
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: git
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Vamsi-Pachipala/config-server.git
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
