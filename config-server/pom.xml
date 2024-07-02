@@ -57,12 +57,22 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<packaging>jar</packaging>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<configuration>
+					<to>
+						<image>vamsi9515/config-server:s1</image>
+					</to>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

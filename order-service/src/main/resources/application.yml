@@ -2,7 +2,7 @@ spring:
   application:
     name: order-service
   datasource:
-    url: dbc:mysql://localhost:3306/order_db?createTableIfNotExists=true
+    url: jdbc:mysql://localhost:3306/order_db?createTableIfNotExists=true
     username: root
     password: Vamsi@243
   jpa:

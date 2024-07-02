@@ -1,5 +1,6 @@
 package com.order_service.order_service.service.impls;
 
+import com.order_service.order_service.client.InventoryFeignClient;
 import com.order_service.order_service.config.WebClientConfig;
 import com.order_service.order_service.dto.InventoryCheckList;
 import com.order_service.order_service.dto.InventoryResponse;
@@ -27,8 +28,12 @@ public class OrderServiceImps implements OrderService {
     OrderRepository orderRepository;
 
 
+//    @Autowired
+//    WebClientConfig webClientConfig;
+
+
     @Autowired
-    WebClientConfig webClientConfig;
+    InventoryFeignClient inventoryFeignClient;
 
 
     @Override
@@ -43,13 +48,18 @@ public class OrderServiceImps implements OrderService {
         }
 
         try {
-            InventoryResponse[] inventoryResponses = webClientConfig.getWebClientConfig().build()
-                    .method(HttpMethod.POST)
-                    .uri("http://inventory-service/api/inventory/check-in-stock")
-                    .bodyValue(inventoryCheckLists)
-                    .retrieve()
-                    .bodyToMono(InventoryResponse[].class)
-                    .block();
+//            InventoryResponse[] inventoryResponses = webClientConfig.getWebClientConfig().build()
+//                    .method(HttpMethod.POST)
+//                    .uri("http://inventory-service/api/inventory/check-in-stock")
+//                    .bodyValue(inventoryCheckLists)
+//                    .retrieve()
+//                    .bodyToMono(InventoryResponse[].class)
+//                    .block();
+
+
+            InventoryResponse[] inventoryResponses = inventoryFeignClient.isInStock(inventoryCheckLists).toArray(new InventoryResponse[0]);
+
+            //List<InventoryResponse> responses = inventoryClient.isInStock(skuList);
 
             assert inventoryResponses != null;
             boolean allInStock = Arrays.stream(inventoryResponses).allMatch(InventoryResponse::isInStock);
