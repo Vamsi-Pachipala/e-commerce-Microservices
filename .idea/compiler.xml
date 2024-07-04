@@ -14,6 +14,7 @@
         <module name="discovery-server" />
         <module name="inventory-service" />
         <module name="product-service" />
+        <module name="gateway-server" />
         <module name="order-service" />
         <module name="user-service" />
         <module name="discovery-service" />
@@ -21,7 +22,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="discovery-service" target="1.5" />
-      <module name="gateway-server" target="17" />
       <module name="service-discovery" target="17" />
     </bytecodeTargetLevel>
   </component>
