@@ -13,6 +13,32 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
         show_sql: true
         format_sql: true
+  cloud:
+    stream:
+      bindings:
+        sendCommunication-out-O:
+          destination: send-communication
+
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    connection-timeout: 10s
+
+  mail:
+    host: smtp.example.com
+    port: 5870
+    username: vamsi951585526@gmail.com
+    password: Vamsi@243
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
   profiles:
     active: dev
   config:
@@ -61,3 +87,6 @@ info:
     name: "user-service"
     description: "user-service microservice"
     version: "1.0.0"
+
+
+

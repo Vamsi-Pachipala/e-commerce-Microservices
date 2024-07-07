@@ -8,6 +8,15 @@ spring:
           enabled: true
           lower-case-service-id: true
     config:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:6060/realms/master/protocol/openid-connect/certs
+#        toke
+#        jwt:
+#          jwk-set-uri: "http://localhost:6060/realms/master/protocol/openid-connect/token"
+#          token:
 #      import: "optional:configserver:http://localhost:8071"
 
 #        - id: discovery-server
@@ -85,3 +94,4 @@ resilience4j.circuitbreaker:
       permittedNumberOfCallsInHalfOpenState: 2
       failureRateThreshold: 50
       waitDurationInOpenState: 10000
+

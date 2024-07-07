@@ -1,0 +1,40 @@
+server:
+  port: 9010
+
+spring:
+  application:
+    name: "messaging-server"
+  cloud:
+    function:
+      definition: email
+    stream:
+      bindings:
+        email-in-0:
+          destination: send-communication
+          group: messaging-group
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    connection-timeout: 20s
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: "your email"
+    password: "will your SMTP app password"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+
+logging:
+  level:
+    root: INFO
+
