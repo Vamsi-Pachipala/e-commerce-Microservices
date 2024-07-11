@@ -53,4 +53,13 @@ public class Serviceimpls {
         var result = streamBridge.send("sendCommunication-out-O", user);
         log.info("Is the Communication request successfully triggered ? : {}", result);
     }
+
+    public void updateCommunicationStatus(String email) {
+        try {
+            User user = userRepository.findByEmailId(email);
+            user.setIsEmailSent(true);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

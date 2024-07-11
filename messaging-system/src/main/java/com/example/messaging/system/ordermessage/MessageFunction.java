@@ -19,11 +19,11 @@ public class MessageFunction {
     @Autowired
     private JavaMailSender mailSender;
     @Bean
-    public Function<User,User> email() {
+    public Function<User,String> email() {
         return user -> {
             log.info("message function triggered successfully");
             sendEmail(user);
-            return user;
+            return user.email();
         };
     }
 

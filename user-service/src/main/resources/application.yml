@@ -16,8 +16,12 @@ spring:
   cloud:
     stream:
       bindings:
+        updateCommunication-in-0:
+          destination: communication-sent
+          group: ${spring.application.name}
         sendCommunication-out-O:
           destination: send-communication
+
 
 
   rabbitmq:

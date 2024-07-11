@@ -12,6 +12,8 @@ spring:
         email-in-0:
           destination: send-communication
           group: messaging-group
+        email-out-0:
+          destination: communication-sent
 
   rabbitmq:
     host: localhost

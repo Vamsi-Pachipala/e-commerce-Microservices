@@ -23,4 +23,5 @@ public class User {
     private int age;
     private String mobileNumber;
     private String email;
+    private Boolean isEmailSent;
 }
